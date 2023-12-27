@@ -1,6 +1,6 @@
 <template>
   <div :style="wrapperStyle">
-    <div ref="youtube" :style="wrapperStyle"></div>
+    <div ref="youtube" :style="iframeStyle"></div>
   </div>
 </template>
 
@@ -33,12 +33,16 @@ const YouTube = defineComponent({
       required: true,
     },
     height: {
-      type: [Number, String] as PropType<number | string>,
-      default: 360,
+      type: String as PropType<string>,
+      default: '360',
+    },
+    aspectRatio: {
+      type: String as PropType<string>,
+      default: '16/9',
     },
     width: {
-      type: [Number, String] as PropType<number | string>,
-      default: 640,
+      type: String as PropType<string>,
+      default: '100%',
     },
     host: {
       type: String as PropType<string>,
@@ -52,8 +56,8 @@ const YouTube = defineComponent({
     },
     wrapperStyle(): Record<string, string> {
       return {
-        width: `${this.width}px`,
-        height: `${this.height}px`,
+        width: this.width + (this.width.match(/px|%/) ? '' : 'px'),
+        aspectRatio: this.aspectRatio,
         position: 'relative',
       }
     },
