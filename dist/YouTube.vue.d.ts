@@ -43,7 +43,7 @@ declare const YouTube: import("vue").DefineComponent<{
     id(): string;
     wrapperStyle(): Record<string, string>;
 }, {
-    initPlayer(): void;
+    initPlayer(): Promise<void>;
     /**
      * Queues a video by ID.
      *

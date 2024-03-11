@@ -122,7 +122,11 @@ const YouTube = defineComponent({
     }
   },
   methods: {
-    initPlayer(): void {
+    async initPlayer(): Promise<void> {
+      if (typeof YT === 'undefined') {
+        await this.promise
+      }
+
       this.initiated = true
       // eslint-disable-next-line no-undef
       this.player = new YT.Player(this.$refs.youtube as HTMLElement, {
