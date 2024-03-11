@@ -2927,7 +2927,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/YouTube.vue?vue&type=template&id=39832eb3&bindings={}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/babel-loader/lib!./node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader-v16/dist??ref--0-1!./src/YouTube.vue?vue&type=template&id=8013b070&bindings={}
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
@@ -2937,7 +2937,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     style: _ctx.iframeStyle
   }, null, 4)], 4);
 }
-// CONCATENATED MODULE: ./src/YouTube.vue?vue&type=template&id=39832eb3&bindings={}
+// CONCATENATED MODULE: ./src/YouTube.vue?vue&type=template&id=8013b070&bindings={}
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
 var es_array_for_each = __webpack_require__("4160");
@@ -3082,6 +3082,14 @@ var YouTube = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["defineCompon
   methods: {
     initPlayer: function initPlayer() {
       var _this2 = this;
+
+      // eslint-disable-next-line no-undef
+      if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
+        setTimeout(function () {
+          return _this2.initPlayer();
+        }, 500);
+        return;
+      }
 
       this.initiated = true; // eslint-disable-next-line no-undef
 
